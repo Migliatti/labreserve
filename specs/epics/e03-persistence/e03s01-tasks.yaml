@@ -1,0 +1,29 @@
+story_id: e03s01
+title: Reservas transacionais contra SQLite
+status: failing
+bcps: 5
+tasks:
+  - id: 1
+    description: "Inicializar SQLite com seed determinístico e consultas de recursos"
+    verify: "npm test -- tests/integration/sqlite-repository.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories: ["persistence", "integration"]
+  - id: 2
+    description: "Criar reserva e evento na mesma transação, com conflito estrito"
+    verify: "npm test -- tests/integration/create-reservation.test.ts"
+    risk: P0
+    status: failing
+    allure:
+      severity: critical
+      categories: ["persistence", "transaction"]
+  - id: 3
+    description: "Cancelar, liberar horário e consultar reservas e histórico"
+    verify: "npm test -- tests/integration/cancel-and-query.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories: ["persistence", "integration"]

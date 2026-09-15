@@ -1,0 +1,9 @@
+id: e03
+title: Persistência e casos de uso
+description: SQLite determinístico, transações e coordenação de reservas sem HTTP.
+status: planned
+stories:
+  - id: e03s01
+    title: Reservas transacionais contra SQLite
+    bcps: 5
+    status: failing
