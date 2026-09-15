@@ -7,7 +7,7 @@ tasks:
     description: "Inicializar SQLite com seed determinístico e consultas de recursos"
     verify: "npm test -- tests/integration/sqlite-repository.test.ts"
     risk: P1
-    status: failing
+    status: passing
     allure:
       severity: high
       categories: ["persistence", "integration"]
@@ -23,7 +23,7 @@ tasks:
     description: "Cancelar, liberar horário e consultar reservas e histórico"
     verify: "npm test -- tests/integration/cancel-and-query.test.ts"
     risk: P1
-    status: failing
+    status: passing
     allure:
       severity: high
       categories: ["persistence", "integration"]
