@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { TimeInterval } from '../../src/domain/time-interval.js';
+
+test('normaliza um intervalo ISO 8601 com offset para UTC', () => {
+  const interval = TimeInterval.create(
+    '2026-09-16T10:00:00-03:00',
+    '2026-09-16T11:00:00-03:00',
+  );
+
+  assert.equal(interval.startAt, '2026-09-16T13:00:00.000Z');
+  assert.equal(interval.endAt, '2026-09-16T14:00:00.000Z');
+});
