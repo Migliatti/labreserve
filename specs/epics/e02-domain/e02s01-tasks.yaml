@@ -1,0 +1,25 @@
+story_id: e02s01
+title: Intervalos e cancelamento de reservas
+status: failing
+bcps: 4
+tasks:
+  - id: 1
+    description: "Validar intervalo e detectar sobreposição estrita, inclusive limites consecutivos"
+    verify: "npm test -- tests/domain/time-interval.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "domain"
+        - "unit"
+  - id: 2
+    description: "Cancelar reserva confirmada uma única vez sem permitir reativação"
+    verify: "npm test -- tests/domain/reservation.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories:
+        - "domain"
+        - "unit"

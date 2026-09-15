@@ -1,0 +1,9 @@
+id: e02
+title: Domínio de reservas
+description: Regras puras de intervalo e transição de reserva, independentes de HTTP, React e SQLite.
+status: planned
+stories:
+  - id: e02s01
+    title: Intervalos e cancelamento de reservas
+    bcps: 4
+    status: failing
