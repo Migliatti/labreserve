@@ -1,3 +1,5 @@
+const ISO_8601_WITH_TIMEZONE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
+
 export class DomainError extends Error {
   constructor(
     public readonly code: 'INVALID_TIME_RANGE',
@@ -17,7 +19,13 @@ export class TimeInterval {
     const start = new Date(startAt);
     const end = new Date(endAt);
 
-    if (end <= start) {
+    if (
+      !ISO_8601_WITH_TIMEZONE.test(startAt)
+      || !ISO_8601_WITH_TIMEZONE.test(endAt)
+      || Number.isNaN(start.getTime())
+      || Number.isNaN(end.getTime())
+      || end <= start
+    ) {
       throw new DomainError('INVALID_TIME_RANGE', 'O término deve ser posterior ao início.');
     }
 
