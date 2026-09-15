@@ -48,6 +48,22 @@ export function createAppServer(options: AppServerOptions) {
         const input = reservationInput(await bodyOf(request));
         return send(response, 201, { data: service.createReservation(input) });
       }
+      if (request.method === 'GET' && url.pathname === '/api/reservations') {
+        const status = url.searchParams.get('status');
+        if (status !== null && status !== 'CONFIRMED' && status !== 'CANCELLED') throw new ValidationError('Estado de reserva inválido.');
+        const resourceId = url.searchParams.get('resourceId');
+        return send(response, 200, { data: service.listReservations({
+          ...(resourceId !== null ? { resourceId } : {}),
+          ...(status ? { status } : {}),
+        }) });
+      }
+      const match = /^\/api\/reservations\/([^/]+)\/(cancel|history)$/.exec(url.pathname);
+      if (match?.[1] && match[2]) {
+        const id = match[1];
+        const action = match[2];
+        if (request.method === 'POST' && action === 'cancel') return send(response, 200, { data: service.cancelReservation(id) });
+        if (request.method === 'GET' && action === 'history') return send(response, 200, { data: service.getReservationHistory(id) });
+      }
       return send(response, 404, { code: 'RESOURCE_NOT_FOUND', message: 'Rota não encontrada.' });
     } catch (error) {
       const result = errorResponse(error);
