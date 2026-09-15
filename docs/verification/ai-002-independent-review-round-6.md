@@ -45,6 +45,6 @@ Por pedido do usuário, todos os should-fix e nits foram tratados:
 
 Gate repetido em 2026-09-15: typecheck, lint, build, `npm test` (19), `npm run test:e2e` (3), smoke aprovados.
 
-## Próxima ação
+## Entrega
 
-Commit local da AI-002; push/PR somente mediante pedido.
+A AI-002 foi entregue via PR #1 (`feat/labreserve-api`) e mesclada em `main` no commit `8265e0a`.

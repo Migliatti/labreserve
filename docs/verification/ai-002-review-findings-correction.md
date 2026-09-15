@@ -101,4 +101,4 @@ cold-start smoke   # porta 3100: lab-chemistry, equipment-microscope
 
 ## Limitações e próxima ação
 
-Gate local aprovado. Rodada 6 aprovada (ver `ai-002-independent-review-round-6.md`); nenhuma publicação, commit ou push foi realizada.
+Gate local e rodada 6 aprovados (ver `ai-002-independent-review-round-6.md`). A AI-002 foi entregue via PR #1 (`feat/labreserve-api`) e mesclada em `main` no commit `8265e0a`.
