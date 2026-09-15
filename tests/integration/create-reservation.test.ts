@@ -41,3 +41,23 @@ test('cria reserva e evento atomicamente, recusa conflito e aceita horário cons
     repository.close();
   }
 });
+
+test('reverte a reserva quando a gravação do evento falha', () => {
+  const repository = new SqliteLabReserveRepository(':memory:');
+  const generated = ['reservation-1', 'event-1', 'reservation-2', 'event-1'];
+  const service = new LabReserveService(repository, clock, {
+    generate: () => generated.shift() ?? 'unexpected-id',
+  });
+
+  try {
+    service.createReservation({
+      resourceId: 'lab-chemistry', startAt: '2026-09-17T10:00:00Z', endAt: '2026-09-17T11:00:00Z',
+    });
+    assert.throws(() => service.createReservation({
+      resourceId: 'lab-chemistry', startAt: '2026-09-17T12:00:00Z', endAt: '2026-09-17T13:00:00Z',
+    }));
+    assert.equal(service.listReservations({}).length, 1);
+  } finally {
+    repository.close();
+  }
+});
