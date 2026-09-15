@@ -1,13 +1,13 @@
 story_id: e01s01
 title: Configuração TypeScript e ferramentas de qualidade
-status: failing
+status: passing
 bcps: 3
 tasks:
   - id: 1
     description: "Configurar scripts reproduzíveis para testes, análise estática e build"
     verify: "npm run typecheck && npm run lint && npm run build"
     risk: P1
-    status: failing
+    status: passing
     allure:
       severity: high
       categories:
