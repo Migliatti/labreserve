@@ -59,5 +59,6 @@ export class SqliteLabReserveRepository implements LabReserveRepository {
     return this.database.prepare(`SELECT id, resource_id AS resourceId, start_at AS startAt, end_at AS endAt, status, created_at AS createdAt, cancelled_at AS cancelledAt FROM reservations ${where} ORDER BY start_at, id`).all(...values).map(reservationFromRow);
   }
   listHistory(reservationId: string): ReservationEvent[] { return this.database.prepare('SELECT id, reservation_id AS reservationId, type, occurred_at AS occurredAt FROM reservation_events WHERE reservation_id = ? ORDER BY occurred_at, id').all(reservationId).map(eventFromRow); }
+  listAllHistory(): ReservationEvent[] { return this.database.prepare('SELECT id, reservation_id AS reservationId, type, occurred_at AS occurredAt FROM reservation_events ORDER BY occurred_at, id').all().map(eventFromRow); }
   close(): void { this.database.close(); }
 }

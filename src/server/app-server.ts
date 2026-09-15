@@ -43,7 +43,13 @@ export function createAppServer(options: AppServerOptions) {
   const server = createServer(async (request, response) => {
     try {
       const url = new URL(request.url ?? '/', 'http://localhost');
-      if (request.method === 'GET' && url.pathname === '/api/resources') return send(response, 200, { data: service.listResources() });
+      if (request.method === 'GET' && url.pathname === '/api/resources') {
+        const startAt = url.searchParams.get('startAt');
+        const endAt = url.searchParams.get('endAt');
+        if ((startAt === null) !== (endAt === null)) throw new ValidationError('Início e término devem ser informados juntos.');
+        return send(response, 200, { data: service.listAvailability(startAt ?? undefined, endAt ?? undefined) });
+      }
+      if (request.method === 'GET' && url.pathname === '/api/history') return send(response, 200, { data: service.getHistory() });
       if (request.method === 'POST' && url.pathname === '/api/reservations') {
         const input = reservationInput(await bodyOf(request));
         return send(response, 201, { data: service.createReservation(input) });

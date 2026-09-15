@@ -23,6 +23,17 @@ export class LabReserveService {
     return this.repository.listResources();
   }
 
+  listAvailability(startAt?: string, endAt?: string): Array<Resource & { available?: boolean }> {
+    const resources = this.repository.listResources();
+    if (startAt === undefined || endAt === undefined) return resources;
+    const interval = TimeInterval.create(startAt, endAt);
+    return resources.map((resource) => ({
+      ...resource,
+      available: resource.status === 'OPERATIONAL'
+        && this.repository.findConflict(resource.id, interval.startAt, interval.endAt) === null,
+    }));
+  }
+
   createReservation(input: CreateReservationInput): Reservation {
     const interval = TimeInterval.create(input.startAt, input.endAt);
     return this.repository.transaction(() => {
@@ -73,5 +84,9 @@ export class LabReserveService {
 
   getReservationHistory(reservationId: string): ReservationEvent[] {
     return this.repository.listHistory(reservationId);
+  }
+
+  getHistory(): ReservationEvent[] {
+    return this.repository.listAllHistory();
   }
 }

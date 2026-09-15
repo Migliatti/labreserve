@@ -13,6 +13,7 @@ export interface LabReserveRepository {
   insertEvent(event: ReservationEvent): void;
   listReservations(filters: { resourceId?: string; status?: ReservationStatus }): Reservation[];
   listHistory(reservationId: string): ReservationEvent[];
+  listAllHistory(): ReservationEvent[];
 }
 
 export interface Clock { now(): Date; }
