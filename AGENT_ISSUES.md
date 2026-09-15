@@ -4,10 +4,20 @@
 
 ## Active
 
+### AI-004 — Add repository-level agent instructions
+- **Status:** pending
+- **Priority:** urgent
+- **Goal:** create `AGENTS.md` at the repository root with project commands, conventions, validation, review, and WIP commit/push policy.
+- **Next action:** review the existing project configuration and write `AGENTS.md` before resuming other work.
+- **Acceptance criteria:** a fresh coding agent can follow the repository workflow without relying on chat context.
+- **Depends on:** none
+- **Context:** highest-priority task requested by the user. Preserve `AGENT_ISSUES.md` as the persistent work board.
+- **Updated:** 2026-03-31
+
 ### AI-003 — Build repository knowledge graph
 - **Status:** in progress
 - **Goal:** run the full graphify pipeline on the repository.
-- **Next action:** extract code/docs, build and validate the graph, then generate report and HTML outputs.
+- **Next action:** resume only after AI-004 is completed.
 - **Acceptance criteria:** `graphify-out/graph.json`, `GRAPH_REPORT.md`, and `graph.html` exist and graph health is reported.
 - **Blockers:** none.
 - **Context:** detected 49 supported files (~8,127 words): 28 code and 21 documents.
