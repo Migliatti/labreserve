@@ -47,7 +47,17 @@ export class SqliteLabReserveRepository implements LabReserveRepository {
   findResource(id: string): Resource | null { const row = this.database.prepare('SELECT id, name, category, status FROM resources WHERE id = ?').get(id); return row ? resourceFromRow(row) : null; }
   findConflict(resourceId: string, startAt: string, endAt: string): Reservation | null { const row = this.database.prepare("SELECT id, resource_id AS resourceId, start_at AS startAt, end_at AS endAt, status, created_at AS createdAt, cancelled_at AS cancelledAt FROM reservations WHERE resource_id = ? AND status = 'CONFIRMED' AND start_at < ? AND end_at > ? LIMIT 1").get(resourceId, endAt, startAt); return row ? reservationFromRow(row) : null; }
   insertReservation(reservation: Reservation): void { this.database.prepare('INSERT INTO reservations VALUES (?, ?, ?, ?, ?, ?, ?)').run(reservation.id, reservation.resourceId, reservation.startAt, reservation.endAt, reservation.status, reservation.createdAt, reservation.cancelledAt); }
+  findReservation(id: string): Reservation | null { const row = this.database.prepare('SELECT id, resource_id AS resourceId, start_at AS startAt, end_at AS endAt, status, created_at AS createdAt, cancelled_at AS cancelledAt FROM reservations WHERE id = ?').get(id); return row ? reservationFromRow(row) : null; }
+  updateReservation(reservation: Reservation): void { this.database.prepare('UPDATE reservations SET status = ?, cancelled_at = ? WHERE id = ?').run(reservation.status, reservation.cancelledAt, reservation.id); }
   insertEvent(event: ReservationEvent): void { this.database.prepare('INSERT INTO reservation_events VALUES (?, ?, ?, ?)').run(event.id, event.reservationId, event.type, event.occurredAt); }
+  listReservations(filters: { resourceId?: string; status?: Reservation['status'] }): Reservation[] {
+    const clauses: string[] = [];
+    const values: string[] = [];
+    if (filters.resourceId) { clauses.push('resource_id = ?'); values.push(filters.resourceId); }
+    if (filters.status) { clauses.push('status = ?'); values.push(filters.status); }
+    const where = clauses.length ? `WHERE ${clauses.join(' AND ')}` : '';
+    return this.database.prepare(`SELECT id, resource_id AS resourceId, start_at AS startAt, end_at AS endAt, status, created_at AS createdAt, cancelled_at AS cancelledAt FROM reservations ${where} ORDER BY start_at, id`).all(...values).map(reservationFromRow);
+  }
   listHistory(reservationId: string): ReservationEvent[] { return this.database.prepare('SELECT id, reservation_id AS reservationId, type, occurred_at AS occurredAt FROM reservation_events WHERE reservation_id = ? ORDER BY occurred_at, id').all(reservationId).map(eventFromRow); }
   close(): void { this.database.close(); }
 }

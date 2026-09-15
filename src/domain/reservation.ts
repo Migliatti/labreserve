@@ -2,12 +2,14 @@ import { DomainError } from './domain-error.js';
 
 export { DomainError } from './domain-error.js';
 
+export type ReservationStatus = 'CONFIRMED' | 'CANCELLED';
+
 export interface Reservation {
   id: string;
   resourceId: string;
   startAt: string;
   endAt: string;
-  status: 'CONFIRMED' | 'CANCELLED';
+  status: ReservationStatus;
   createdAt: string;
   cancelledAt: string | null;
 }

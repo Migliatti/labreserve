@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { TimeInterval } from '../domain/time-interval.js';
-import { createConfirmedReservation, type Reservation } from '../domain/reservation.js';
+import { cancelReservation, createConfirmedReservation, type Reservation, type ReservationStatus } from '../domain/reservation.js';
 import type { ReservationEvent } from '../domain/reservation-event.js';
 import type { Clock, IdGenerator, LabReserveRepository } from './contracts.js';
 import { ApplicationError } from './application-error.js';
@@ -45,6 +45,25 @@ export class LabReserveService {
       this.repository.insertEvent(event);
       return reservation;
     });
+  }
+
+  cancelReservation(id: string): Reservation {
+    return this.repository.transaction(() => {
+      const current = this.repository.findReservation(id);
+      if (!current) throw new ApplicationError('RESERVATION_NOT_FOUND', 'Reserva não encontrada.');
+      const occurredAt = this.clock.now().toISOString();
+      const reservation = cancelReservation(current, occurredAt);
+      this.repository.updateReservation(reservation);
+      this.repository.insertEvent({
+        id: this.ids.generate(), reservationId: id,
+        type: 'RESERVATION_CANCELLED', occurredAt,
+      });
+      return reservation;
+    });
+  }
+
+  listReservations(filters: { resourceId?: string; status?: ReservationStatus }): Reservation[] {
+    return this.repository.listReservations(filters);
   }
 
   getReservationHistory(reservationId: string): ReservationEvent[] {
