@@ -1,0 +1,9 @@
+id: e04
+title: API HTTP
+description: Adaptador HTTP para os casos de uso, validação de entrada e erros uniformes.
+status: planned
+stories:
+  - id: e04s01
+    title: Contrato HTTP de reservas
+    bcps: 5
+    status: failing

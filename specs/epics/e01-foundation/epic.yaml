@@ -1,0 +1,9 @@
+id: e01
+title: Fundação reprodutível
+description: Configuração mínima e determinística para iniciar os ciclos TDD do LabReserve.
+status: planned
+stories:
+  - id: e01s01
+    title: Configuração TypeScript e ferramentas de qualidade
+    bcps: 3
+    status: failing

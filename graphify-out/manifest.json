@@ -1,0 +1,296 @@
+{
+  "eslint.config.js": {
+    "mtime": 1789438641.9857547,
+    "seen": 1789444720.5834944,
+    "ast_hash": "87974ab6ed9fe2bce83877d73a968fdd",
+    "semantic_hash": "87974ab6ed9fe2bce83877d73a968fdd"
+  },
+  "package.json": {
+    "mtime": 1789443871.2516353,
+    "seen": 1789444720.5834944,
+    "ast_hash": "4b99237a62222ddbe738041dec77ed09",
+    "semantic_hash": "4b99237a62222ddbe738041dec77ed09"
+  },
+  "playwright.config.ts": {
+    "mtime": 1789443865.473067,
+    "seen": 1789444720.5834944,
+    "ast_hash": "4e8571172a4cddbfe9c5cd353a8a6a1b",
+    "semantic_hash": "4e8571172a4cddbfe9c5cd353a8a6a1b"
+  },
+  "src/application/application-error.ts": {
+    "mtime": 1789439223.5723631,
+    "seen": 1789444720.5834944,
+    "ast_hash": "585dbef536438534f700d1336e1105b7",
+    "semantic_hash": "585dbef536438534f700d1336e1105b7"
+  },
+  "src/application/contracts.ts": {
+    "mtime": 1789440067.5532784,
+    "seen": 1789444720.5834944,
+    "ast_hash": "68de763da8dc188d654543670f379529",
+    "semantic_hash": "68de763da8dc188d654543670f379529"
+  },
+  "src/application/lab-reserve-service.ts": {
+    "mtime": 1789440077.0877657,
+    "seen": 1789444720.5834944,
+    "ast_hash": "10c84c8a2e8bc6cc0549fd932982c6e3",
+    "semantic_hash": "10c84c8a2e8bc6cc0549fd932982c6e3"
+  },
+  "src/domain/domain-error.ts": {
+    "mtime": 1789438850.6574926,
+    "seen": 1789444720.5834944,
+    "ast_hash": "d88b8d3167eb5871ee4870824ba37c86",
+    "semantic_hash": "d88b8d3167eb5871ee4870824ba37c86"
+  },
+  "src/domain/reservation-event.ts": {
+    "mtime": 1789439223.5723631,
+    "seen": 1789444720.5834944,
+    "ast_hash": "ed8c86e4e6e5007afa4f9fbde4f53e26",
+    "semantic_hash": "ed8c86e4e6e5007afa4f9fbde4f53e26"
+  },
+  "src/domain/reservation.ts": {
+    "mtime": 1789439294.049415,
+    "seen": 1789444720.5834944,
+    "ast_hash": "2cab8d0cfe89039bb5425028478ffe82",
+    "semantic_hash": "2cab8d0cfe89039bb5425028478ffe82"
+  },
+  "src/domain/resource.ts": {
+    "mtime": 1789439108.8538537,
+    "seen": 1789444720.5834944,
+    "ast_hash": "9d2d1d77eb4bc854d7818dc8e7d02c15",
+    "semantic_hash": "9d2d1d77eb4bc854d7818dc8e7d02c15"
+  },
+  "src/domain/time-interval.ts": {
+    "mtime": 1789438850.6585028,
+    "seen": 1789444720.5834944,
+    "ast_hash": "c228f1db3d53d3a1552a8e6fe73e0d21",
+    "semantic_hash": "c228f1db3d53d3a1552a8e6fe73e0d21"
+  },
+  "src/persistence/sqlite-lab-reserve-repository.ts": {
+    "mtime": 1789440085.381798,
+    "seen": 1789444720.5834944,
+    "ast_hash": "63477c2de5a77530056d18ae8f10109f",
+    "semantic_hash": "63477c2de5a77530056d18ae8f10109f"
+  },
+  "src/project.ts": {
+    "mtime": 1789438353.9001594,
+    "seen": 1789444720.5834944,
+    "ast_hash": "fc8de0d6926c9e063b389a17de7fb0df",
+    "semantic_hash": "fc8de0d6926c9e063b389a17de7fb0df"
+  },
+  "src/server/app-server.ts": {
+    "mtime": 1789441085.5648072,
+    "seen": 1789444720.5834944,
+    "ast_hash": "6191e3220d7f9e694644d6966220ad01",
+    "semantic_hash": "6191e3220d7f9e694644d6966220ad01"
+  },
+  "src/server/main.ts": {
+    "mtime": 1789441481.63695,
+    "seen": 1789444720.5834944,
+    "ast_hash": "3d246346468d15ee0f480e8a29ffc9fc",
+    "semantic_hash": "3d246346468d15ee0f480e8a29ffc9fc"
+  },
+  "src/web/api.ts": {
+    "mtime": 1789442736.3249116,
+    "seen": 1789444720.5834944,
+    "ast_hash": "274c60d5329c6b2b75ad31a5476c5f8a",
+    "semantic_hash": "274c60d5329c6b2b75ad31a5476c5f8a"
+  },
+  "src/web/main.tsx": {
+    "mtime": 1789443865.3063135,
+    "seen": 1789444720.5834944,
+    "ast_hash": "5bb01627b6c232041b25cb25ce2e7047",
+    "semantic_hash": "5bb01627b6c232041b25cb25ce2e7047"
+  },
+  "src/web/vite-env.d.ts": {
+    "mtime": 1789441610.0909803,
+    "seen": 1789444720.5834944,
+    "ast_hash": "0352474ba2918efe13895edbc3780d94",
+    "semantic_hash": "0352474ba2918efe13895edbc3780d94"
+  },
+  "tests/api/reservations-api.test.ts": {
+    "mtime": 1789441075.3034298,
+    "seen": 1789444720.5834944,
+    "ast_hash": "be57b560182c65e746773de52a2190a1",
+    "semantic_hash": "be57b560182c65e746773de52a2190a1"
+  },
+  "tests/domain/reservation.test.ts": {
+    "mtime": 1789438824.3192225,
+    "seen": 1789444720.5834944,
+    "ast_hash": "851f5c5fd6e034872678b686d92f1a6b",
+    "semantic_hash": "851f5c5fd6e034872678b686d92f1a6b"
+  },
+  "tests/domain/time-interval.test.ts": {
+    "mtime": 1789438784.7989264,
+    "seen": 1789444720.5834944,
+    "ast_hash": "182e65e79c388fb2e0c85934fb33cbad",
+    "semantic_hash": "182e65e79c388fb2e0c85934fb33cbad"
+  },
+  "tests/e2e/reservations.spec.ts": {
+    "mtime": 1789442999.128268,
+    "seen": 1789444720.5834944,
+    "ast_hash": "64fd4e7d92852b11e03b2c8094411a3c",
+    "semantic_hash": "64fd4e7d92852b11e03b2c8094411a3c"
+  },
+  "tests/foundation/project-configuration.test.mjs": {
+    "mtime": 1789438221.816878,
+    "seen": 1789444720.5834944,
+    "ast_hash": "008f004a77fde81c95c297d27e215195",
+    "semantic_hash": "008f004a77fde81c95c297d27e215195"
+  },
+  "tests/integration/cancel-and-query.test.ts": {
+    "mtime": 1789439279.267782,
+    "seen": 1789444720.5834944,
+    "ast_hash": "8b20563d9ca7d853b1ec5c3e969bcaab",
+    "semantic_hash": "8b20563d9ca7d853b1ec5c3e969bcaab"
+  },
+  "tests/integration/create-reservation.test.ts": {
+    "mtime": 1789439465.785234,
+    "seen": 1789444720.5834944,
+    "ast_hash": "9ffa7790c51de21ceeb7b4ea9815056c",
+    "semantic_hash": "9ffa7790c51de21ceeb7b4ea9815056c"
+  },
+  "tests/integration/sqlite-repository.test.ts": {
+    "mtime": 1789439086.7724788,
+    "seen": 1789444720.5834944,
+    "ast_hash": "9f2318cbaaea486394908de084f4b1ec",
+    "semantic_hash": "9f2318cbaaea486394908de084f4b1ec"
+  },
+  "tsconfig.json": {
+    "mtime": 1789438353.9001594,
+    "seen": 1789444720.5834944,
+    "ast_hash": "d041e842e340f8376c9f5fd89f1b7d38",
+    "semantic_hash": "d041e842e340f8376c9f5fd89f1b7d38"
+  },
+  "vite.config.ts": {
+    "mtime": 1789441484.3079648,
+    "seen": 1789444720.5834944,
+    "ast_hash": "118f3ed8dc9f7d9adc04f9247afa94c1",
+    "semantic_hash": "118f3ed8dc9f7d9adc04f9247afa94c1"
+  },
+  "AGENT_ISSUES.md": {
+    "mtime": 1789444706.1930773,
+    "seen": 1789444720.5834944,
+    "ast_hash": "ba0d0a52052b71fdcb692187864bc74c",
+    "semantic_hash": "ba0d0a52052b71fdcb692187864bc74c"
+  },
+  "IMPLEMENTATION_PLAN.md": {
+    "mtime": 1789443888.1781354,
+    "seen": 1789444720.5834944,
+    "ast_hash": "f57ede7602fc8a52778ade8f506915c3",
+    "semantic_hash": "f57ede7602fc8a52778ade8f506915c3"
+  },
+  "README.md": {
+    "mtime": 1789443881.3754199,
+    "seen": 1789444720.5834944,
+    "ast_hash": "493a65a24dabe007cc3e0995b7643ded",
+    "semantic_hash": "493a65a24dabe007cc3e0995b7643ded"
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1789443894.8977997,
+    "seen": 1789444720.5834944,
+    "ast_hash": "d83c52123f593f18fc5b2a7b526a7a22",
+    "semantic_hash": "d83c52123f593f18fc5b2a7b526a7a22"
+  },
+  "docs/verification/e01s01-foundation.md": {
+    "mtime": 1789438479.4749818,
+    "seen": 1789444720.5834944,
+    "ast_hash": "3fc1186a954eb6b32d147d9252f727f9",
+    "semantic_hash": "3fc1186a954eb6b32d147d9252f727f9"
+  },
+  "docs/verification/e02s01-domain.md": {
+    "mtime": 1789438905.991103,
+    "seen": 1789444720.5834944,
+    "ast_hash": "10f6e3687406bc939013323ddd8ae284",
+    "semantic_hash": "10f6e3687406bc939013323ddd8ae284"
+  },
+  "docs/verification/e03s01-persistence-partial.md": {
+    "mtime": 1789439389.0395968,
+    "seen": 1789444720.5834944,
+    "ast_hash": "2394f332dcab7c3f5cf8582a926e5fb6",
+    "semantic_hash": "2394f332dcab7c3f5cf8582a926e5fb6"
+  },
+  "docs/verification/e05s01-interface-e2e.md": {
+    "mtime": 1789442796.9670448,
+    "seen": 1789444720.5834944,
+    "ast_hash": "8e51e1d159a246316da07b14b41c0d64",
+    "semantic_hash": "8e51e1d159a246316da07b14b41c0d64"
+  },
+  "index.html": {
+    "mtime": 1789442689.644169,
+    "seen": 1789444720.5834944,
+    "ast_hash": "b6cb77eaad5422318d9790722044a4e3",
+    "semantic_hash": "b6cb77eaad5422318d9790722044a4e3"
+  },
+  "specs/epics/e01-foundation/e01s01-foundation.md": {
+    "mtime": 1789438468.1207783,
+    "seen": 1789444720.5834944,
+    "ast_hash": "38aec0133574a4370c84a605b22634eb",
+    "semantic_hash": "38aec0133574a4370c84a605b22634eb"
+  },
+  "specs/epics/e01-foundation/e01s01-tasks.yaml": {
+    "mtime": 1789438428.5981224,
+    "seen": 1789444720.5834944,
+    "ast_hash": "fc4318c4182281917a822e6b50378a07",
+    "semantic_hash": "fc4318c4182281917a822e6b50378a07"
+  },
+  "specs/epics/e01-foundation/epic.yaml": {
+    "mtime": 1789438207.2160335,
+    "seen": 1789444720.5834944,
+    "ast_hash": "2d1b13c07d2210f41e9318be5da8f6fd",
+    "semantic_hash": "2d1b13c07d2210f41e9318be5da8f6fd"
+  },
+  "specs/epics/e02-domain/e02s01-domain.md": {
+    "mtime": 1789438612.8814135,
+    "seen": 1789444720.5834944,
+    "ast_hash": "a66161f88781260189fc201828401f09",
+    "semantic_hash": "a66161f88781260189fc201828401f09"
+  },
+  "specs/epics/e02-domain/e02s01-tasks.yaml": {
+    "mtime": 1789438891.7994454,
+    "seen": 1789444720.5834944,
+    "ast_hash": "1c263bfa428d8c2a3553d350693340fd",
+    "semantic_hash": "1c263bfa428d8c2a3553d350693340fd"
+  },
+  "specs/epics/e02-domain/epic.yaml": {
+    "mtime": 1789438612.7708206,
+    "seen": 1789444720.5834944,
+    "ast_hash": "6891c5f1bc8c7ebde132f279d7124ccd",
+    "semantic_hash": "6891c5f1bc8c7ebde132f279d7124ccd"
+  },
+  "specs/epics/e03-persistence/e03s01-persistence.md": {
+    "mtime": 1789439077.7608607,
+    "seen": 1789444720.5834944,
+    "ast_hash": "24539225444a483a93fc76fa02d4bf7c",
+    "semantic_hash": "24539225444a483a93fc76fa02d4bf7c"
+  },
+  "specs/epics/e03-persistence/e03s01-tasks.yaml": {
+    "mtime": 1789439378.3448565,
+    "seen": 1789444720.5834944,
+    "ast_hash": "03fdb09e174612bbfc44e6b009403bc3",
+    "semantic_hash": "03fdb09e174612bbfc44e6b009403bc3"
+  },
+  "specs/epics/e03-persistence/epic.yaml": {
+    "mtime": 1789439077.6501348,
+    "seen": 1789444720.5834944,
+    "ast_hash": "c6a04a79a45a74678494cd3252f94b09",
+    "semantic_hash": "c6a04a79a45a74678494cd3252f94b09"
+  },
+  "specs/epics/e04-api/e04s01-api.md": {
+    "mtime": 1789439819.5934281,
+    "seen": 1789444720.5834944,
+    "ast_hash": "9ad901230be9e2f1d6f4da0eba635ee3",
+    "semantic_hash": "9ad901230be9e2f1d6f4da0eba635ee3"
+  },
+  "specs/epics/e04-api/e04s01-tasks.yaml": {
+    "mtime": 1789439819.545233,
+    "seen": 1789444720.5834944,
+    "ast_hash": "8a67d7471daf39f970acd1174c0ed700",
+    "semantic_hash": "8a67d7471daf39f970acd1174c0ed700"
+  },
+  "specs/epics/e04-api/epic.yaml": {
+    "mtime": 1789439819.4986022,
+    "seen": 1789444720.5834944,
+    "ast_hash": "4ccf9a9fa560961ace95a4f5e763ace4",
+    "semantic_hash": "4ccf9a9fa560961ace95a4f5e763ace4"
+  }
+}

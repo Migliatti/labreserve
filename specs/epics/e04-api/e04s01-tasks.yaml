@@ -1,0 +1,21 @@
+story_id: e04s01
+title: Contrato HTTP de reservas
+status: failing
+bcps: 5
+tasks:
+  - id: 1
+    description: "Expor recursos e criação de reserva com JSON validado"
+    verify: "npm test -- tests/api/reservations-api.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories: ["api", "contract"]
+  - id: 2
+    description: "Expor listagem, cancelamento e histórico com erros uniformes"
+    verify: "npm test -- tests/api/reservations-api.test.ts"
+    risk: P1
+    status: failing
+    allure:
+      severity: high
+      categories: ["api", "contract"]
