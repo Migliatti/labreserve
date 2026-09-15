@@ -49,3 +49,19 @@ test('lista, cancela e mostra histórico com erros estruturados', async () => wi
   assert.equal(invalid.status, 400);
   assert.equal((await json(invalid)).code, 'VALIDATION_ERROR');
 }));
+
+test('informa disponibilidade, histórico global e erros de domínio pelo contrato', async () => withServer(async (url) => {
+  const interval = 'startAt=2026-09-19T10%3A00%3A00Z&endAt=2026-09-19T11%3A00%3A00Z';
+  const available = await fetch(`${url}/api/resources?${interval}`);
+  assert.equal(((await json(available)).data as Array<{ available: boolean }>)[0]?.available, true);
+
+  const payload = JSON.stringify({ resourceId: 'lab-chemistry', startAt: '2026-09-19T10:00:00Z', endAt: '2026-09-19T11:00:00Z' });
+  await fetch(`${url}/api/reservations`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: payload });
+  const conflict = await fetch(`${url}/api/reservations`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: payload });
+  assert.equal(conflict.status, 409);
+  assert.equal((await json(conflict)).code, 'RESERVATION_CONFLICT');
+
+  const history = await fetch(`${url}/api/history`);
+  assert.equal(history.status, 200);
+  assert.equal(((await json(history)).data as unknown[]).length, 1);
+}));
