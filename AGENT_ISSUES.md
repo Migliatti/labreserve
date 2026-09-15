@@ -5,12 +5,10 @@
 ## Active
 
 ### AI-004 — Add repository-level agent instructions
-- **Status:** pending
+- **Status:** concluída
 - **Priority:** urgent
 - **Goal:** create `AGENTS.md` at the repository root with project commands, conventions, validation, review, and WIP commit/push policy.
-- **Next action:** review the existing project configuration and write `AGENTS.md` before resuming other work.
-- **Acceptance criteria:** a fresh coding agent can follow the repository workflow without relying on chat context.
-- **Depends on:** none
+- **Evidence:** `AGENTS.md` documents the architecture, business invariants, npm commands, test-first workflow, full validation gate, verification records, commit/push constraints, and the mandatory use of `AGENT_ISSUES.md` plus `graphify-out/` as persistent project context.
 - **Context:** highest-priority task requested by the user. Preserve `AGENT_ISSUES.md` as the persistent work board.
 - **Updated:** 2026-03-31
 
