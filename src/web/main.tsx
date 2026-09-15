@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createRoot } from "react-dom/client";
 import {
   api,
@@ -13,7 +13,12 @@ const displayDate = (value: string) =>
     dateStyle: "short",
     timeStyle: "short",
   }).format(new Date(value));
-const toIso = (value: string) => new Date(value).toISOString();
+const toIso = (value: string, label: string) => {
+  const date = new Date(value);
+  if (!value || Number.isNaN(date.getTime()))
+    throw new Error(`Informe uma data e hora válidas para ${label}.`);
+  return date.toISOString();
+};
 const initialStart = "2030-01-15T09:00";
 const initialEnd = "2030-01-15T10:00";
 
@@ -28,28 +33,37 @@ function App() {
   const [status, setStatus] = useState("");
   const [notice, setNotice] = useState("");
   const [loading, setLoading] = useState(true);
+  const refreshVersion = useRef(0);
+  const refreshInputs = useRef({ startAt: initialStart, endAt: initialEnd, filterResourceId: "", status: "" });
 
   async function refresh(): Promise<void> {
+    const version = ++refreshVersion.current;
+    const inputs = { ...refreshInputs.current };
     setLoading(true);
     try {
+      const interval = { startAt: toIso(inputs.startAt, "o início"), endAt: toIso(inputs.endAt, "o término") };
+      const filters = { resourceId: inputs.filterResourceId, status: inputs.status };
       const [nextResources, nextReservations, nextEvents] = await Promise.all([
-        api.resources(toIso(startAt), toIso(endAt)),
-        api.reservations({ resourceId: filterResourceId, status }),
+        api.resources(interval.startAt, interval.endAt),
+        api.reservations(filters),
         api.history(),
       ]);
+      if (version !== refreshVersion.current) return;
       setResources(nextResources);
       setReservations(nextReservations);
       setEvents(nextEvents);
       if (!createResourceId && nextResources[0])
         setCreateResourceId(nextResources[0].id);
     } catch (error) {
-      setNotice(
-        error instanceof Error
-          ? error.message
-          : "Não foi possível carregar os dados.",
-      );
+      if (version === refreshVersion.current) {
+        setNotice(
+          error instanceof Error
+            ? error.message
+            : "Não foi possível carregar os dados.",
+        );
+      }
     } finally {
-      setLoading(false);
+      if (version === refreshVersion.current) setLoading(false);
     }
   }
 
@@ -63,8 +77,8 @@ function App() {
     try {
       const reservation = await api.createReservation({
         resourceId: createResourceId,
-        startAt: toIso(startAt),
-        endAt: toIso(endAt),
+        startAt: toIso(startAt, "o início"),
+        endAt: toIso(endAt, "o término"),
       });
       setNotice(`Reserva ${reservation.id} criada com sucesso.`);
       await refresh();
@@ -131,7 +145,10 @@ function App() {
               aria-label="Início"
               type="datetime-local"
               value={startAt}
-              onChange={(event) => setStartAt(event.target.value)}
+              onChange={(event) => {
+                refreshInputs.current.startAt = event.target.value;
+                setStartAt(event.target.value);
+              }}
               required
             />
           </label>
@@ -141,7 +158,10 @@ function App() {
               aria-label="Término"
               type="datetime-local"
               value={endAt}
-              onChange={(event) => setEndAt(event.target.value)}
+              onChange={(event) => {
+                refreshInputs.current.endAt = event.target.value;
+                setEndAt(event.target.value);
+              }}
               required
             />
           </label>
@@ -151,7 +171,13 @@ function App() {
       <section aria-labelledby="availability-title" className="card">
         <div className="section-heading">
           <h2 id="availability-title">Disponibilidade</h2>
-          <button type="button" onClick={() => void refresh()}>
+          <button
+            type="button"
+            onClick={() => {
+              setNotice("");
+              void refresh();
+            }}
+          >
             Consultar período
           </button>
         </div>
@@ -183,7 +209,10 @@ function App() {
             <select
               aria-label="Filtrar por recurso"
               value={filterResourceId}
-              onChange={(event) => setFilterResourceId(event.target.value)}
+              onChange={(event) => {
+                refreshInputs.current.filterResourceId = event.target.value;
+                setFilterResourceId(event.target.value);
+              }}
             >
               <option value="">Todos os recursos</option>
               {resources.map((resource) => (
@@ -198,14 +227,23 @@ function App() {
             <select
               aria-label="Estado"
               value={status}
-              onChange={(event) => setStatus(event.target.value)}
+              onChange={(event) => {
+                refreshInputs.current.status = event.target.value;
+                setStatus(event.target.value);
+              }}
             >
               <option value="">Todos</option>
               <option value="CONFIRMED">Confirmadas</option>
               <option value="CANCELLED">Canceladas</option>
             </select>
           </label>
-          <button type="button" onClick={() => void refresh()}>
+          <button
+            type="button"
+            onClick={() => {
+              setNotice("");
+              void refresh();
+            }}
+          >
             Aplicar filtros
           </button>
         </div>

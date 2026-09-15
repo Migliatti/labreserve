@@ -83,6 +83,9 @@ export class LabReserveService {
   }
 
   getReservationHistory(reservationId: string): ReservationEvent[] {
+    if (!this.repository.findReservation(reservationId)) {
+      throw new ApplicationError('RESERVATION_NOT_FOUND', 'Reserva não encontrada.');
+    }
     return this.repository.listHistory(reservationId);
   }
 
