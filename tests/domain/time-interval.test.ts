@@ -18,3 +18,10 @@ test('rejeita um intervalo cujo término seja igual ao início', () => {
     (error: unknown) => error instanceof DomainError && error.code === 'INVALID_TIME_RANGE',
   );
 });
+
+test('rejeita uma data que não esteja em ISO 8601 com fuso explícito', () => {
+  assert.throws(
+    () => TimeInterval.create('amanhã', '2026-09-16T11:00:00Z'),
+    (error: unknown) => error instanceof DomainError && error.code === 'INVALID_TIME_RANGE',
+  );
+});
