@@ -31,4 +31,8 @@ export class TimeInterval {
 
     return new TimeInterval(start.toISOString(), end.toISOString());
   }
+
+  overlaps(other: TimeInterval): boolean {
+    return this.startAt < other.endAt && this.endAt > other.startAt;
+  }
 }
