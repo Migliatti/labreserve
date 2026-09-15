@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:api": "tsx src/server/main.ts",
     "test": "tsx --test tests/**/*.test.*",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",

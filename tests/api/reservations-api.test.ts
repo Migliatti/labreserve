@@ -41,6 +41,9 @@ test('lista, cancela e mostra histórico com erros estruturados', async () => wi
   assert.equal(((await json(listed)).data as unknown[]).length, 1);
 
   assert.equal((await fetch(`${url}/api/reservations/${reservation.id}/cancel`, { method: 'POST' })).status, 200);
+  const repeatedCancellation = await fetch(`${url}/api/reservations/${reservation.id}/cancel`, { method: 'POST' });
+  assert.equal(repeatedCancellation.status, 409);
+  assert.equal((await json(repeatedCancellation)).code, 'RESERVATION_ALREADY_CANCELLED');
   const history = await fetch(`${url}/api/reservations/${reservation.id}/history`);
   assert.equal(history.status, 200);
   assert.equal(((await json(history)).data as unknown[]).length, 2);

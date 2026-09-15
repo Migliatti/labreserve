@@ -29,7 +29,10 @@ async function bodyOf(request: IncomingMessage): Promise<unknown> {
 
 function errorResponse(error: unknown): { status: number; body: object } {
   if (error instanceof ValidationError) return { status: 400, body: { code: 'VALIDATION_ERROR', message: error.message } };
-  if (error instanceof DomainError) return { status: 400, body: { code: error.code, message: error.message } };
+  if (error instanceof DomainError) {
+    const status = error.code === 'RESERVATION_ALREADY_CANCELLED' ? 409 : 400;
+    return { status, body: { code: error.code, message: error.message } };
+  }
   if (error instanceof ApplicationError) {
     const status = error.code === 'RESERVATION_CONFLICT' ? 409 : 404;
     return { status, body: { code: error.code, message: error.message, ...(error.details ? { details: error.details } : {}) } };

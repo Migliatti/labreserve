@@ -1,11 +1,11 @@
 # Plano de implementação — LabReserve
 
-**Status:** pronto para execução TDD; nenhum código de produção foi criado.  
+**Status:** fundação, domínio, persistência, contrato HTTP, interface React e E2E implementados; gate de validação executado e revisão independente em andamento.
 **Escopo:** exclusivamente a primeira versão aprovada em 2026-09-15.
 
 ## Premissas verificadas
 
-O repositório foi restaurado ao commit inicial e contém somente `README.md` versionado. Não há código, configuração, banco ou testes legados a preservar.
+O repositório contém a implementação TypeScript do backend, configuração reproduzível e testes de domínio, integração e API. A continuação deve preservar esses artefatos e tratar este plano como histórico e roteiro das etapas pendentes.
 
 ## Dependências propostas (slopcheck)
 

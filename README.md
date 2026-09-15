@@ -11,6 +11,9 @@ Sistema web local para consultar e reservar laboratórios e equipamentos.
 
 ```bash
 npm install
+# Terminal 1: API em http://127.0.0.1:3000
+npm run dev:api
+# Terminal 2: interface em http://127.0.0.1:5173
 npm run dev
 npm test
 npm run typecheck
@@ -19,4 +22,4 @@ npm run build
 npm run test:e2e
 ```
 
-A aplicação ainda está na fase inicial de implementação. Consulte [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) para a sequência TDD aprovada e [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) para as decisões arquiteturais.
+O sistema oferece consulta de disponibilidade, criação, listagem, filtros, cancelamento e histórico de reservas. O banco local cria os recursos iniciais `lab-chemistry` e `equipment-microscope`; não há autenticação, edição/reativação, notificações ou calendário avançado. Consulte [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) para as decisões e [docs/verification/e05s01-interface-e2e.md](docs/verification/e05s01-interface-e2e.md) para o gate executado.

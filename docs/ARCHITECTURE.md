@@ -3,15 +3,15 @@
 ## Decisões
 
 - **Runtime:** Node.js 22.13+ para usar `node:sqlite` estável, sem driver SQLite externo.
-- **Monólito modular TypeScript:** um único pacote npm, com frontend React e API Node no mesmo repositório.
+- **Monólito modular TypeScript:** API Node e frontend React/Vite no mesmo pacote npm.
 - **Persistência:** SQLite; dados de produção em arquivo local configurável e testes de integração em `:memory:`.
 - **HTTP:** servidor baseado em `node:http`; a camada HTTP traduz entrada/saída e não contém regras de negócio.
 - **UI:** React + Vite, uma tela responsiva e acessível; sem biblioteca de componentes.
-- **Testes:** `node:test` para domínio, integração e API; Playwright para fluxos E2E no navegador.
+- **Testes:** `node:test` cobre domínio, integração e API; Playwright cobre os fluxos E2E de reserva.
 
 As versões serão fixadas no `package.json` e consolidadas no `package-lock.json`; `latest` não será usado.
 
-## Estrutura planejada
+## Estrutura atual e planejada
 
 ```text
 src/
