@@ -1,13 +1,8 @@
-const ISO_8601_WITH_TIMEZONE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
+import { DomainError } from './domain-error.js';
 
-export class DomainError extends Error {
-  constructor(
-    public readonly code: 'INVALID_TIME_RANGE',
-    message: string,
-  ) {
-    super(message);
-  }
-}
+export { DomainError } from './domain-error.js';
+
+const ISO_8601_WITH_TIMEZONE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
 
 export class TimeInterval {
   private constructor(
