@@ -44,18 +44,16 @@
 - **Context:** highest-priority task requested by the user. Preserve `AGENT_ISSUES.md` as the persistent work board.
 - **Updated:** 2026-03-31
 
+## Done
+
 ### AI-002 — Deliver LabReserve React UI, E2E coverage, and documentation
-- **Status:** em andamento
+- **Completed:** 2026-09-15
+- **Evidence:** rodada 6 de revisão independente aprovada; entregue via PR #1 (`feat/labreserve-api`), mesclado em `main` no commit `8265e0a`.
 - **Goal:** provide the planned browser interface and acceptance coverage for resource reservations.
 - **Decision (2026-09-15):** o usuário escolheu a opção 1 e autorizou a execução completa.
-- **Next action:** recomendações da rodada 6 tratadas e gate repetido; commit local realizado. Push/PR somente mediante pedido.
 - **Progress:** rodada 6 executada em 2026-09-15 e **aprovada** (A 95%, B 95%, zero must-fix): 413 drenado com teto de 64 MiB/5 s e regressão 2/8 MiB, E2E fora de ordem com detecção comprovada por mutação 3/3, espera pelo seletor de recurso e validação de data em português. Gate: typecheck, lint, build, `npm test` (19), `npm run test:e2e` (3), smoke. Registro em `docs/verification/ai-002-independent-review-round-6.md`. Antes: rodada 5 executada em 2026-09-15 e **reprovada** (A 84% com 1 must-fix; B 94% aprova). Ambos confirmaram as correções da rodada 4 e, independentemente, reproduziram `ECONNRESET` sem status 413 para corpos de 2–20 MiB em `src/server/app-server.ts` (corpo não drenado antes do fechamento). Should-fix: E2E de resposta fora de ordem com baixa detecção de regressão, criação antes do carregamento de recursos, mensagem `Invalid time value` crua. Registro em `docs/verification/ai-002-independent-review-round-5.md`. Anteriormente: a autoauditoria foi aprovada e registrou o manifesto de escopo, a inspeção de segurança/tipos/clareza e a validação reutilizada em `docs/verification/ai-002-local-audit.md`. A investigação local não encontrou artefatos, referências, commits ou objetos Git que comprovem as rodadas 4 e 5; a alegação anterior de quinta reprovação (84%/86%) foi removida por não ter evidência. O teste E2E de race usa uma barreira controlada: retém a primeira resposta, aguarda a segunda resposta filtrada e só então libera a obsoleta. A cobertura API transmite upload chunked em quatro escritas, verifica o limite incremental, `Content-Length` de `9007199254740992` e que logger que lança não altera a resposta 500 segura. A rodada 4 foi reprovada: ambos os revisores identificaram `toIso()` fora do `try` na UI como `must-fix`; o revisor B também identificou flakiness no helper E2E. Ambas as correções receberam regressão E2E. Gate completo repetido em 2026-03-31: typecheck, lint, build, `npm test` (18), `npm run test:e2e` (3, 2 workers) e cold-start smoke aprovados; evidência em `docs/verification/ai-002-review-findings-correction.md`.
 - **Acceptance criteria:** users can create, filter, cancel, and inspect reservation history; E2E acceptance scenarios and documented validation pass.
-- **Blockers:** nenhum para o gate de revisão; commit/publicação dependem de pedido explícito.
 - **Context:** Corrigidos anteriormente: histórico inexistente agora retorna 404; ISO impossível é rejeitado; API recebeu cabeçalhos de segurança, tipo de conteúdo obrigatório e limite de 1 MiB; E2E roda em 2 workers com recursos distintos e asserções vinculadas ao dado do cenário. A rodada 3 confirmou três correções necessárias; decisão em `docs/verification/ai-002-independent-review-round-3.md`. A revisão seguinte encontrou cenários chunked e closures obsoletas; ambos foram corrigidos com regressões API/E2E: corpo acima de 1 MiB responde 413 sem reset antes da resposta, fecha a conexão e usa `Content-Length`; atualizações de UI ignoram respostas obsoletas e leem filtros atuais; exceções imprevistas são registradas internamente. Gate local aprovado em 2026-03-31: smoke cold-start, typecheck, lint, build, `npm test` (17) e `npm run test:e2e` (2). O protocolo econômico de AI-002 foi registrado em `AGENTS.md`: testes focados por ciclo, um gate final e duas revisões independentes paralelas restritas ao diff. O usuário autorizou manter a alteração de metadados em `package-lock.json`. `graphify . --update` foi tentado, mas a versão local exigiu chave LLM para 23 documentos; os artefatos publicados existentes foram preservados.
-- **Updated:** 2026-03-31
-
-## Done
 
 ### AI-006 — Optimize independent-review execution
 - **Completed:** 2026-03-31

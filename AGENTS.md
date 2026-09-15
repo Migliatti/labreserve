@@ -97,12 +97,12 @@ Also perform a cold-start API smoke check when server behavior changes. Record i
 - Antes da revisão externa, faça uma autoauditoria local e entregue aos dois revisores, em paralelo e sem compartilhamento entre eles, um briefing curto: objetivo, arquivos do diff, testes de regressão e resultados já obtidos do gate.
 - A revisão externa deve inspecionar somente o diff e seus contratos diretamente afetados. Não deve repetir o gate completo já registrado; pode executar verificações focadas quando isso esclarecer um risco. As duas continuam obrigatórias, independentes e precisam aprovar.
 
-The current delivery task (AI-002) remains blocked until the review findings are corrected and the gate plus independent review are repeated. Its current priority findings are: nonexistent reservation-history handling, E2E isolation/coverage, date validation, and HTTP security.
+AI-002 was delivered after passing the full gate and two independent reviews (round 6), merged via PR #1. Reuse this cost protocol for future deliveries that require independent review.
 
 ## Git and delivery policy
 
 - Do not commit, push, rebase, reset, force-push, or discard changes unless the user explicitly requests that action.
 - Keep WIP local and describe its validation status accurately; a passing subset is not a release approval.
-- For AI-002, the existing conditional authorization applies only after the full gate and **two independent reviews pass**. Until then, do not publish a delivery. Apply the AI-002 cost protocol without weakening this gate.
+- Deliveries that require independent review may be published only after the full gate and **two independent reviews pass**. Apply the AI-002 cost protocol without weakening this gate.
 - Before any requested commit, inspect `git status` and the diff; include only intended files and use a conventional commit message.
 - Never place credentials, tokens, local databases, Playwright reports, or generated runtime caches under version control. Respect `.gitignore`.
