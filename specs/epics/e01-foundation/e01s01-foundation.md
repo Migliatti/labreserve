@@ -1,5 +1,9 @@
 # Story e01s01 — Fundação reprodutível
 
+**type:** feat  
+**context:** infra  
+**risk:** P1
+
 ## Requirements
 
 #### ADDED: Ambiente local reproduzível
