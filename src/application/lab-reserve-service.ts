@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { TimeInterval } from '../domain/time-interval.js';
 import { cancelReservation, createConfirmedReservation, type Reservation, type ReservationStatus } from '../domain/reservation.js';
 import type { ReservationEvent } from '../domain/reservation-event.js';
+import type { Resource } from '../domain/resource.js';
 import type { Clock, IdGenerator, LabReserveRepository } from './contracts.js';
 import { ApplicationError } from './application-error.js';
 
@@ -17,6 +18,10 @@ export class LabReserveService {
     private readonly clock: Clock = { now: () => new Date() },
     private readonly ids: IdGenerator = { generate: randomUUID },
   ) {}
+
+  listResources(): Resource[] {
+    return this.repository.listResources();
+  }
 
   createReservation(input: CreateReservationInput): Reservation {
     const interval = TimeInterval.create(input.startAt, input.endAt);
