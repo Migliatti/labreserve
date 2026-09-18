@@ -6,8 +6,8 @@ Sistema web local para consultar disponibilidade e reservar laboratórios e equi
 
 O LabReserve é um experimento prático: **construir uma aplicação realmente funcional usando agentes de IA com boas práticas de engenharia**, em vez de gerar código sem controle. O foco não foi só o produto, mas o processo:
 
-- **Plano antes do código:** o escopo foi quebrado em histórias pequenas em [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md), cada uma com critérios de aceitação.
-- **Instruções explícitas para agentes:** [AGENTS.md](AGENTS.md) define arquitetura, regras de negócio invariantes, comandos, fluxo de trabalho e política de Git.
+- **Plano antes do código:** o escopo foi quebrado em histórias pequenas em [IMPLEMENTATION_PLAN.md](docs/archive/IMPLEMENTATION_PLAN.md), cada uma com critérios de aceitação.
+- **Instruções explícitas para agentes:** [CLAUDE.md](CLAUDE.md) define arquitetura, regras de negócio invariantes, comandos, fluxo de trabalho, skills do plugin `superpowers` e política de Git. Planejamento e revisões já entregues ficam arquivados em [docs/archive/](docs/archive/).
 - **Contexto persistente:** [AGENT_ISSUES.md](AGENT_ISSUES.md) funciona como quadro de handoff entre sessões, e `graphify-out/` guarda um mapa de conhecimento do repositório.
 - **Test-first:** cada mudança de comportamento começa com um teste falhando.
 - **Gate de validação obrigatório:** typecheck, lint, build, testes unitários/integração/API, E2E e smoke test antes de declarar algo pronto.
